@@ -1,0 +1,19 @@
+{
+  "name": "hackelo",
+  "version": "1.0.0",
+  "description": "Hackelo is a platform where organizers host hackathons and participants easily form teams, connect, and build together.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ebin234/Hackelo.git"
+  },
+  "author": "Ebin Yesudas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ebin234/Hackelo/issues"
+  },
+  "homepage": "https://github.com/Ebin234/Hackelo#readme"
+}
