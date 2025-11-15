@@ -1,13 +1,12 @@
 const express = require("express");
 const connectDB = require("./config/connectDB");
+const authRouter = require("./routes/authRouter");
 require("dotenv").config({ quiet: true });
 
 const app = express();
 
-app.get("/", (req, res) => {
-  console.log("first route");
-  res.send("Hello world");
-});
+app.use(express.json());
+app.use("/", authRouter);
 
 const PORT = process.env.PORT || 3002;
 connectDB()
