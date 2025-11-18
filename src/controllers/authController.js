@@ -34,13 +34,29 @@ const login = async (req, res) => {
     if (!comparePassword) {
       throw new Error("Incorrect Password");
     }
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
-    res.cookie("token", token, { maxAge: 60 * 60 * 1000 }).json({message:"login successful"});
+    const token = jwt.sign(
+      { id: user._id, role: user.role, access: user.access },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
+    res
+      .cookie("token", token, { maxAge: 60 * 60 * 1000 })
+      .json({ message: "login successful" });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 };
 
-module.exports = { register, login };
+const logout = (req, res) => {
+  try {
+    res
+      .cookie("token", null, { maxAge: 1 })
+      .json({ message: "Logout successful" });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+module.exports = { register, login, logout };
