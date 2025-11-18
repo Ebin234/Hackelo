@@ -1,12 +1,16 @@
 const express = require("express");
 const connectDB = require("./config/connectDB");
 const authRouter = require("./routes/authRouter");
+const eventsRouter = require("./routes/hackPostRouter");
+const cookieParser = require("cookie-parser");
 require("dotenv").config({ quiet: true });
 
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 app.use("/", authRouter);
+app.use("/", eventsRouter);
 
 const PORT = process.env.PORT || 3002;
 connectDB()

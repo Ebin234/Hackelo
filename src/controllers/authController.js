@@ -6,14 +6,12 @@ const register = async (req, res) => {
   try {
     const { userName, email, password, role } = req.body;
     const hashPassword = await bcrypt.hash(password, 10);
-    console.log({ hashPassword });
     const user = new UserModel({
       userName,
       email,
       password: hashPassword,
       role,
     });
-    console.log({ user });
     await user.save();
     res.status(201).json({ message: ` ${user.role} created successfully` });
   } catch (err) {
@@ -25,12 +23,10 @@ const login = async (req, res) => {
   try {
     const { userName, email, password } = req.body;
     const user = await UserModel.findOne({ $or: [{ userName }, { email }] });
-    console.log({ user });
     if (!user) {
       throw new Error("User not found");
     }
     const comparePassword = await bcrypt.compare(password, user.password);
-    console.log({ comparePassword });
     if (!comparePassword) {
       throw new Error("Incorrect Password");
     }
