@@ -1,4 +1,5 @@
 const HackPostModel = require("../models/hackPostModel");
+const JoinRequestModel = require("../models/joinRequestModel");
 
 const createHackPost = async (req, res) => {
   try {
@@ -29,9 +30,23 @@ const getOrganizerHackPosts = async (req, res) => {
   }
 };
 
+const getAllJoinRequests = async (req, res) => {
+  try {
+    const { postId } = req.params;
+    const { _id } = req.user;
+    const joinRequests = await JoinRequestModel.find({
+      organizer: _id,
+      hackPostId: postId,
+    }).populate("user", "userName email");
+    res.json({ data: joinRequests, message: "Fetch Successful" });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 // try {
 //   } catch (err) {
 //     res.status(400).json({ message: err.message });
 //   }
 
-module.exports = { createHackPost, getOrganizerHackPosts };
+module.exports = { createHackPost, getOrganizerHackPosts, getAllJoinRequests };

@@ -12,7 +12,6 @@ const JoinRequestSchema = new mongoose.Schema({
   },
   hackPostId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "HackPost",
     required: true,
   },
   status: {

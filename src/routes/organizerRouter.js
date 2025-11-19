@@ -2,6 +2,7 @@ const router = require("express").Router();
 const {
   createHackPost,
   getOrganizerHackPosts,
+  getAllJoinRequests,
 } = require("../controllers/organizerRoutesController");
 const { organizerAuth } = require("../middlewares/organizerAuth");
 const commonAuth = require("../middlewares/commonAuth");
@@ -19,4 +20,10 @@ router.get(
   getOrganizerHackPosts
 );
 
+router.get(
+  "/organizer/get-join-request/:postId",
+  commonAuth,
+  organizerAuth,
+  getAllJoinRequests
+);
 module.exports = router;
