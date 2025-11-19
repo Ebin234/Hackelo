@@ -3,14 +3,17 @@ const connectDB = require("./config/connectDB");
 const authRouter = require("./routes/authRouter");
 const organizerRouter = require("./routes/organizerRouter");
 const cookieParser = require("cookie-parser");
+const userRouter = require("./routes/userRouter");
 require("dotenv").config({ quiet: true });
 
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+
 app.use("/", authRouter);
 app.use("/", organizerRouter);
+app.use("/", userRouter);
 
 const PORT = process.env.PORT || 3002;
 connectDB()
