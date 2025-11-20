@@ -7,7 +7,7 @@ const getAllPosts = async (req, res) => {
       "hackName description imageUrl organizer"
     );
     console.log({ posts });
-    res.json({ data: posts, message: "fetch success" });
+    res.json({ data: posts, message: "Fetch success" });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -20,6 +20,13 @@ const createJoinRequest = async (req, res) => {
     let post = await HackPostModel.findById(id);
     if (!post) {
       throw new Error("Post not found");
+    }
+    // console.log(post.acceptedUsers.includes(user.id));
+    if (
+      post.acceptedUsers.includes(user.id) ||
+      post.rejectedUsers.includes(user.id)
+    ) {
+      throw new Error("Join request already send and verified");
     }
     const userExist = await JoinRequestModel.findOne({
       user: user._id,
@@ -35,7 +42,7 @@ const createJoinRequest = async (req, res) => {
       });
       console.log({ joinRequest });
       await joinRequest.save();
-      res.status(201).json({ message: "request created successfully" });
+      res.status(201).json({ message: "Request created successfully" });
     }
   } catch (err) {
     res.status(400).json({ message: err.message });
