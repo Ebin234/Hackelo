@@ -14,14 +14,14 @@ const JoinRequestSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
-  status: {
-    type: String,
-    enum: {
-      values: ["PENDING", "ACCEPTED", "REJECTED"],
-      message: `{VALUE} is not supported`,
-    },
-    default:"PENDING"
-  },
+  // status: {
+  //   type: String,
+  //   enum: {
+  //     values: ["PENDING", "ACCEPTED", "REJECTED"],
+  //     message: `{VALUE} is not supported`,
+  //   },
+  //   default:"PENDING"
+  // },
 });
 
 module.exports = mongoose.model("JoinRequest", JoinRequestSchema);

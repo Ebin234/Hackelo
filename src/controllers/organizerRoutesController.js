@@ -44,9 +44,61 @@ const getAllJoinRequests = async (req, res) => {
   }
 };
 
+const handleRequest = async (req, res) => {
+  try {
+    const { status } = req.query;
+    const { reqId } = req.params;
+    // console.log(status, reqId);
+    const allowedStatusValue = ["ACCEPTED", "REJECTED"];
+    if (!allowedStatusValue.includes(status)) {
+      throw new Error(
+        `${status} is not supported, provide ACCEPTED or REJECTED`
+      );
+    }
+    const joinRequest = await JoinRequestModel.findById(reqId);
+    // console.log({ joinRequest });
+    if (!joinRequest) {
+      throw new Error("Join request not found");
+    }
+    const hackPost = await HackPostModel.findById(joinRequest.hackPostId);
+    // console.log({ hackPost });
+    let data;
+    if (status === "ACCEPTED") {
+      data = await HackPostModel.findByIdAndUpdate(
+        joinRequest.hackPostId,
+        {
+          $push: { acceptedUsers: joinRequest.user },
+        },
+        { returnDocument: "after" }
+      );
+    } else {
+      data = await HackPostModel.findByIdAndUpdate(
+        joinRequest.hackPostId,
+        {
+          $push: { rejectedUsers: joinRequest.user },
+        },
+        { returnDocument: "after" }
+      );
+    }
+    /**
+     * @dev removing the handled join request from the joinRequest DB
+     */
+    await JoinRequestModel.findByIdAndDelete(joinRequest._id);
+
+    res.json({ data: data, message: `Join Request ${status} successfully` });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 // try {
 //   } catch (err) {
 //     res.status(400).json({ message: err.message });
 //   }
 
-module.exports = { createHackPost, getOrganizerHackPosts, getAllJoinRequests };
+module.exports = {
+  createHackPost,
+  getOrganizerHackPosts,
+  getAllJoinRequests,
+  handleRequest,
+};

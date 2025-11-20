@@ -3,6 +3,7 @@ const {
   createHackPost,
   getOrganizerHackPosts,
   getAllJoinRequests,
+  handleRequest,
 } = require("../controllers/organizerRoutesController");
 const { organizerAuth } = require("../middlewares/organizerAuth");
 const commonAuth = require("../middlewares/commonAuth");
@@ -26,4 +27,12 @@ router.get(
   organizerAuth,
   getAllJoinRequests
 );
+
+router.post(
+  "/organizer/:reqId",
+  commonAuth,
+  organizerAuth,
+  handleRequest
+);
+
 module.exports = router;
