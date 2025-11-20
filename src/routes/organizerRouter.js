@@ -29,7 +29,7 @@ router.get(
 );
 
 router.post(
-  "/organizer/:reqId",
+  "/organizer/handle-request/:reqId",
   commonAuth,
   organizerAuth,
   handleRequest

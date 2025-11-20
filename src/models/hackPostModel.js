@@ -18,6 +18,7 @@ const HackPostSchema = new mongoose.Schema({
   },
   acceptedUsers: {
     type: [mongoose.Schema.Types.ObjectId],
+    ref:"User"
   },
   organizer: {
     type: mongoose.Schema.Types.ObjectId,

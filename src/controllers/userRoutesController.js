@@ -49,9 +49,32 @@ const createJoinRequest = async (req, res) => {
   }
 };
 
+const getParticipants = async (req, res) => {
+  try {
+    const { hackId } = req.params;
+    const user = req.user;
+    // console.log(user._id);
+    const hackPost = await HackPostModel.findById(hackId);
+    // console.log({ hackPost });
+    if (!hackPost.acceptedUsers.includes(user._id)) {
+      return res.status(403).json({ message: "Access Denied" });
+    }
+    const newHackPost = await hackPost.populate("acceptedUsers");
+    const data = newHackPost.acceptedUsers.filter((value) => {
+      if (value._id.toString() !== user._id.toString()) {
+        return value;
+      }
+    });
+    // console.log({ data });
+    res.json({ data, message: "Fetch successful" });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 // try {
 //   } catch (err) {
 //     res.status(400).json({ message: err.message });
 //   }
 
-module.exports = { getAllPosts, createJoinRequest };
+module.exports = { getAllPosts, createJoinRequest, getParticipants };
