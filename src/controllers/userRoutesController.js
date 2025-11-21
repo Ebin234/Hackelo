@@ -1,5 +1,7 @@
 const HackPostModel = require("../models/hackPostModel");
 const JoinRequestModel = require("../models/joinRequestModel");
+const TeamModel = require("../models/teamModel");
+const TeamFormationRequestModel = require("../models/teamFormationRequestModel");
 
 const getAllPosts = async (req, res) => {
   try {
@@ -72,9 +74,54 @@ const getParticipants = async (req, res) => {
   }
 };
 
+const teamFormationRequest = async (req, res) => {
+  try {
+    const user = req.user;
+    const { hackPostId, participantId } = req.params;
+    console.log({ user, hackPostId, participantId });
+    const hackPost = await HackPostModel.findById(hackPostId);
+    if (!hackPost) {
+      throw new Error("HackPost Not Found");
+    }
+    if (!hackPost.acceptedUsers.includes(participantId)) {
+      throw new Error("User not found in this hack post");
+    }
+    // const teams = await TeamModel.find({hackPostId})
+    // console.log({teams})
+    const requestExist = await TeamFormationRequestModel.findOne({
+      $or: [
+        { hackPostId, fromUser: user._id, toUser: participantId },
+        { hackPostId, fromUser: participantId, toUser: user._id },
+      ],
+    });
+    if (requestExist) {
+      throw new Error("Request already exist");
+    }
+    console.log({ requestExist });
+    const teamFormationRequest = new TeamFormationRequestModel({
+      hackPostId,
+      fromUser: user._id,
+      toUser: participantId,
+    });
+    console.log({ teamFormationRequest });
+    await teamFormationRequest.save();
+
+    res.status(201).json({ message: "Request created Successfully" });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
+
+
 // try {
 //   } catch (err) {
 //     res.status(400).json({ message: err.message });
 //   }
 
-module.exports = { getAllPosts, createJoinRequest, getParticipants };
+module.exports = {
+  getAllPosts,
+  createJoinRequest,
+  getParticipants,
+  teamFormationRequest,
+};

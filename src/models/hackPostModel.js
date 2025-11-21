@@ -24,6 +24,9 @@ const HackPostSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
+  // teams:{
+  //   type:[String]
+  // }
 });
 
 module.exports = mongoose.model("HackPost", HackPostSchema);
