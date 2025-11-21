@@ -112,7 +112,21 @@ const teamFormationRequest = async (req, res) => {
   }
 };
 
-
+const getTeamFormationRequests = async (req, res) => {
+  try {
+    const { hackPostId } = req.params;
+    const user = req.user;
+    console.log({ hackPostId, user });
+    const requests = await TeamFormationRequestModel.find({
+      hackPostId,
+      toUser: user._id,
+    });
+    console.log({ requests });
+    res.json({ data: requests, message: "Fetch successful" });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
 
 // try {
 //   } catch (err) {
@@ -124,4 +138,5 @@ module.exports = {
   createJoinRequest,
   getParticipants,
   teamFormationRequest,
+  getTeamFormationRequests,
 };
