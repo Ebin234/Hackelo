@@ -17,6 +17,14 @@ const TeamFormationRequestModelSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Team",
   },
+  status: {
+    type: String,
+    enum: {
+      values: ["PENDING", "REJECTED"],
+      message: `{VALUE} is not supported`,
+    },
+    default: "PENDING",
+  },
 });
 
 module.exports = mongoose.model(

@@ -5,6 +5,7 @@ const {
   getParticipants,
   teamFormationRequest,
   getTeamFormationRequests,
+  handleTeamFormationRequests,
 } = require("../controllers/userRoutesController");
 const commonAuth = require("../middlewares/commonAuth");
 
@@ -20,6 +21,11 @@ router.get(
   "/user/team-formation/get-requests/:hackPostId",
   commonAuth,
   getTeamFormationRequests
+);
+router.post(
+  "/user/team-formation/handle-Request/:reqId",
+  commonAuth,
+  handleTeamFormationRequests
 );
 
 module.exports = router;

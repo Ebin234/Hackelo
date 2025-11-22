@@ -128,6 +128,86 @@ const getTeamFormationRequests = async (req, res) => {
   }
 };
 
+const handleTeamFormationRequests = async (req, res) => {
+  try {
+    const { reqId } = req.params;
+    const user = req.user;
+    const { status } = req.query;
+    const allowedStatus = ["ACCEPTED", "REJECTED"];
+    if (!allowedStatus.includes(status)) {
+      throw new Error(`${status} not allowed`);
+    }
+    /**
+     * Finding the request with reqId, userId and the PENDING status state
+     */
+    const request = await TeamFormationRequestModel.findOne({
+      _id: reqId,
+      toUser: user._id,
+      status: "PENDING",
+    });
+    //  If no matching request is found, throw an error.
+    if (!request) {
+      throw new Error("Request not found");
+    }
+    let data;
+    if (status === "ACCEPTED") {
+      /**
+       * Fetch the team details of the user who sent the request (fromUser)
+       */
+      let teamExit = await TeamModel.findOne({
+        hackPostId: request.hackPostId,
+        members: request.fromUser,
+      });
+      console.log({ teamExit });
+      // If request exist then add the toUser to the team  
+      if (teamExit) {
+        data = await TeamModel.findByIdAndUpdate(
+          { _id: teamExit[0]._id },
+          { $push: { members: user._id } },
+          { returnDocument: "after" }
+        );
+        console.log({ data });
+      } else {
+        // Create a new team
+        const team = new TeamModel({
+          hackPostId: request.hackPostId,
+          members: [request.fromUser, request.toUser],
+        });
+        console.log({ team });
+        data = await team.save();
+      }
+      /**
+       * After forming the team, Remove all other PENDING team formation requests for this User
+       * REJECTED requests remain untouched.
+       */
+      await TeamFormationRequestModel.deleteMany({
+        $or: [
+          {
+            hackPostId: request.hackPostId,
+            fromUser: user._id,
+            status: "PENDING",
+          },
+          {
+            hackPostId: request.hackPostId,
+            toUser: user._id,
+            status: "PENDING",
+          },
+        ],
+      });
+    } else {
+      /**
+       * If the status is REJECTED, update the request status to REJECTED and save it to the database.
+       */
+      request.status = "REJECTED";
+      data = await request.save();
+    }
+
+    res.json({ data, message: `Request ${status} successfully` });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 // try {
 //   } catch (err) {
 //     res.status(400).json({ message: err.message });
@@ -139,4 +219,5 @@ module.exports = {
   getParticipants,
   teamFormationRequest,
   getTeamFormationRequests,
+  handleTeamFormationRequests,
 };
