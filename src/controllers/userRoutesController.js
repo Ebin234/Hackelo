@@ -98,6 +98,16 @@ const teamFormationRequest = async (req, res) => {
       throw new Error("Request already exist");
     }
     console.log({ requestExist });
+    const userTeam = await TeamModel.findOne({ hackPostId, members: user._id });
+    const participantTeam = await TeamModel.findOne({
+      hackPostId,
+      members: participantId,
+    });
+    if (userTeam && participantTeam) {
+      throw new Error(
+        "You're already part of a team. Please exit your current team before joining a new one."
+      );
+    }
     const teamFormationRequest = new TeamFormationRequestModel({
       hackPostId,
       fromUser: user._id,
@@ -159,7 +169,7 @@ const handleTeamFormationRequests = async (req, res) => {
         members: request.fromUser,
       });
       console.log({ teamExit });
-      // If request exist then add the toUser to the team  
+      // If request exist then add the toUser to the team
       if (teamExit) {
         data = await TeamModel.findByIdAndUpdate(
           { _id: teamExit[0]._id },
