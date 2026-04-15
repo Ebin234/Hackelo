@@ -11,7 +11,7 @@ export default function Navbar() {
     <div>
       <nav className="h-[86px] flex items-center justify-between pl-5 pr-5">
         <div className="flex flex-row gap-8 items-center">
-          <h1 className="font-bold text-2xl bg-linear-to-r from-[#9C48EA] to-[#CC97FF] bg-clip-text text-transparent">
+          <h1 className="font-bold font-space text-2xl bg-linear-to-r from-[#9C48EA] to-[#CC97FF] bg-clip-text text-transparent">
             Hackelo
           </h1>
           {navItems.map((item, i) => {
@@ -22,7 +22,7 @@ export default function Navbar() {
                 onClick={() => {
                   setActive(item);
                 }}
-                className={`text-[16px] font-normal ${active === item ? "text-[#CC97FF] border-b-2" : "text-[#DEE5FF]"}  `}
+                className={`text-[16px] font-normal font-space ${active === item ? "text-[#CC97FF] border-b-2" : "text-[#DEE5FF]"}  `}
               >
                 {item}
               </Link>
@@ -50,7 +50,7 @@ export default function Navbar() {
               width={15}
               height={19}
             />
-            <button className="w-[135px] h-[34px] text-[14px] font-bold text-[#360061] bg-linear-to-r from-[#9C48EA] to-[#CC97FF] rounded-[19px]">
+            <button className="w-[135px] h-[34px] text-[14px] font-bold font-space text-[#360061] bg-linear-to-r from-[#9C48EA] to-[#CC97FF] rounded-[19px]">
               Host Hackathon
             </button>
             <Image
