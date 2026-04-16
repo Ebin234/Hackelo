@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Banner() {
   return (
     <section>
-      <div className=" flex flex-col gap-12 pl-5 pr-5">
+      <div className=" flex flex-col gap-12 pl-15 pr-15">
         <div className="flex flex-row justify-between ">
           <div className="flex flex-col gap-4 ">
             <h4 className="font-mono text-[14px] leading-5 text-[#3ADFFA]">
