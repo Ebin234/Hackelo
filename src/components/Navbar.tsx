@@ -9,7 +9,7 @@ export default function Navbar() {
   const [active, setActive] = useState("Discover");
   return (
     <div>
-      <nav className="h-[86px] flex items-center justify-between pl-5 pr-5">
+      <nav className="h-21.5 flex items-center justify-between pl-5 pr-5">
         <div className="flex flex-row gap-8 items-center">
           <h1 className="font-bold font-space text-2xl bg-linear-to-r from-[#9C48EA] to-[#CC97FF] bg-clip-text text-transparent">
             Hackelo

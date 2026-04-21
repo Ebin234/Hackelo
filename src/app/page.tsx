@@ -1,17 +1,17 @@
 import Banner from "@/components/Banner";
 import Featured from "@/components/Featured";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+// import Footer from "@/components/Footer";
+// import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <main>
         <Banner />
         <Featured />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
