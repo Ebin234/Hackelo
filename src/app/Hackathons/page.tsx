@@ -127,7 +127,7 @@ export default function page() {
                   <div className="flex flex-row justify-between">
                     {/* <Link href={'/Hackathons'} className="pl-3 pr-3 pt-3 pb-3 bg-[#141F38] rounded-xl bg-linear-to-r from-[#142850] to-[#04ccb1]">More Details</Link>
                     <Link href={'/Hackathons'} className="pl-3 pr-3 pt-3 pb-3 bg-[#141F38] rounded-xl bg-linear-to-r from-[#9C48EA] to-[#CC97FF]">Apply Now</Link> */}
-                    <Link href={"/Hackathons"} className="p-2 bg-[#141F38] w-full flex flex-row justify-between items-center rounded-lg">
+                    <Link href={"/Hackathons/id:dfbvdsfbsdb"} className="p-2 bg-[#141F38] w-full flex flex-row justify-between items-center rounded-lg">
                       <p className="font-space font-bold text-[12px] leading-4 tracking-[1.2px] text-[#DEE5FF]">INQUIRE DETAILS</p>
                       <Image
                         src={"/images/right-arrow.png"}
