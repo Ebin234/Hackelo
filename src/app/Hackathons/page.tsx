@@ -98,12 +98,12 @@ export default function page() {
                     className="rounded-t-xl h-48 object-cover"
                   />
                 </div>
-                <div className="p-5 flex flex-col gap-4">
-                  <div className="flex flex-row items-center gap-13">
+                <div className="p-5 flex flex-col justify-between h-68">
+                  <div className="flex flex-row items-center justify-between">
                     <h4 className="font-space font-bold text-[20px] leading-7 text-[#DEE5FF]">
                       {poster.name}
                     </h4>
-                    <p className="font-mono text-[#3ADFFA] text-[14px] leading-5">
+                    <p className="font-mono text-[#3ADFFA] text-[14px] leading-5 pl-2">
                       ${poster.price}
                     </p>
                   </div>

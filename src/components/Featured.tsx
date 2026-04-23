@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { posterData } from "@/utils/constants";
+import Link from "next/link";
 
 export default function Featured() {
   return (
@@ -9,28 +10,28 @@ export default function Featured() {
           Featured Hackathons
         </h2>
         <div className="flex">
-          <div className="grid grid-cols-3 gap-20 pl-6 pr-6 ">
+          <div className="grid grid-cols-4 gap-6 ">
             {posterData.map((poster, i) => {
               return (
                 <div
                   key={i}
-                  className="h-107 w-[384px] bg-[#0F1930] rounded-xl"
+                  className="h-115 w-85 bg-[#0F1930] rounded-xl"
                 >
-                  <div>
+                  <div className="h-48">
                     <Image
                       src={poster.image}
                       alt="Hackathon poster"
-                      width={384}
+                      width={340}
                       height={192}
-                      className="rounded-t-xl"
+                      className="rounded-t-xl h-48 object-cover"
                     />
                   </div>
-                  <div className="p-5 flex flex-col gap-6">
-                    <div className="flex flex-row justify-between">
-                      <h4 className="font-space font-bold text-[20px] leading-7 text-[#DEE5FF]">
+                  <div className="p-5 flex flex-col justify-between h-68">
+                    <div className="flex flex-row justify-between items-center">
+                      <h4 className="font-space font-bold text-[20px] leading-7 text-[#DEE5FF] ">
                         {poster.name}
                       </h4>
-                      <p className="font-mono text-[#3ADFFA] text-[14px] leading-5">
+                      <p className="font-mono text-[#3ADFFA] text-[14px] leading-5 pl-2">
                         ${poster.price}
                       </p>
                     </div>
@@ -51,6 +52,19 @@ export default function Featured() {
                         })}
                       </ul>
                     </div>
+                    <div className="flex flex-row justify-between">
+                    {/* <Link href={'/Hackathons'} className="pl-3 pr-3 pt-3 pb-3 bg-[#141F38] rounded-xl bg-linear-to-r from-[#142850] to-[#04ccb1]">More Details</Link>
+                    <Link href={'/Hackathons'} className="pl-3 pr-3 pt-3 pb-3 bg-[#141F38] rounded-xl bg-linear-to-r from-[#9C48EA] to-[#CC97FF]">Apply Now</Link> */}
+                    <Link href={"/Hackathons"} className="p-2 bg-[#141F38] w-full flex flex-row justify-between items-center rounded-lg">
+                      <p className="font-space font-bold text-[12px] leading-4 tracking-[1.2px] text-[#DEE5FF]">INQUIRE DETAILS</p>
+                      <Image
+                        src={"/images/right-arrow.png"}
+                        alt="right arrow"
+                        width={9.33}
+                        height={9.33}
+                      />
+                    </Link>
+                  </div>
                     <div className="flex flex-row items-center justify-between">
                       <div className="flex flex-row items-center gap-1">
                         <Image

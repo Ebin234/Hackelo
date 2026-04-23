@@ -12,7 +12,7 @@ export const posterData = [
   },
   {
     image: "/images/poster-2.png",
-    name: "Decentralize Everything",
+    name: "Decentralize Everything gfndfgndfn",
     price: "120,000",
     description: "The largest Web3 gathering of the year. Build scalable dApps and cross-chain protocols.",
     theme: ["WEB3","SOLIDITY","RUST"],
