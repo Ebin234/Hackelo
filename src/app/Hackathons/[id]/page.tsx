@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function page() {
   return (
     <section>
-      <div className="p-5 flex flex-row gap-12">
+      <div className="pl-10 pr-10 pt-5 pb-5 flex flex-row gap-8">
         <div className="flex flex-col gap-11">
           <div className="flex flex-col gap-4">
             <p className="font-inter text-[14px] leading-5 tracking-[1.4px] text-[#3ADFFA]">
@@ -21,8 +21,8 @@ export default function page() {
               interaction through generative intelligence.
             </p>
           </div>
-          <div className="flex flex-row gap-4">
-            <div className="bg-[#0F1930] p-5 rounded-xl flex flex-col gap-6">
+          <div className="flex flex-row gap-10">
+            <div className="bg-[#0F1930] p-5 rounded-xl flex flex-col gap-6 min-w-132">
               <h3 className="font-space text-[24px] leading-8 text-[#DEE5FF]">
                 Timeline & Milestones
               </h3>
@@ -67,7 +67,7 @@ export default function page() {
               {/*todo : right color blue arrow  */}
             </div>
           </div>
-          <div>
+          <div className="flex flex-col gap-8">
             <div className="flex flex-row justify-between">
               <div>
                 <h2 className="font-space font-bold text-3xl leading-9 text-[#DEE5FF]">
@@ -92,10 +92,124 @@ export default function page() {
               </div>
             </div>
             {/* teams details */}
-            <div></div>
+            <div className="grid grid-cols-3 gap-3">
+
+              <div className="w-86.25 bg-[#0F1930] flex flex-col p-6 gap-4 rounded-xl">
+                <div className="flex flex-row justify-between">
+                  <div className="flex flex-col gap-2">
+                      <h2 className=" font-space font-bold text-[20px] leading-7 text-[#DEE5FF]">The Neural Knights</h2>
+                    <div className="flex flex-row gap-3 ">
+                      <p className="font-inter font-bold text-[#A3AAC4] text-[10px] leading-3.75 tracking-[1px] uppercase bg-[#192540] p-2 rounded-2xl">PyTorch</p>
+                      <p className="font-inter font-bold text-[#A3AAC4] text-[10px] leading-3.75 tracking-[1px] uppercase bg-[#192540] p-2 rounded-2xl">Backend</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <p className="font-inter font-bold text-[14px] leading-5 text-[#3ADFFA]">3/4 members</p>
+                    <div className="flex">
+                      <Image src={'/images/profile-1.png'} alt="profile pic" width={32} height={32}  />
+                      <Image src={'/images/profile-2.png'} alt="profile pic" width={32} height={32} className="-ml-3" />
+                      <Image src={'/images/profile-3.png'} alt="profile pic" width={32} height={32} className="-ml-3"/>
+                    </div>
+                  </div>
+                </div>
+                <p className="font-inter text-[14px] leading-5 text-[#A3AAC4]"> Building a decentralized model training
+orchestrator. Looking for a React/Three.js expert…</p>
+                <button className="border border-[#3ADFFA4D] rounded-lg pt-3 pb-3 font-inter font-bold text-[16px] leading-6 text-[#3ADFFA]">Request to Join</button>
+              </div>
+              <div className="w-86.25 bg-[#0F1930] flex flex-col p-6 gap-4 rounded-xl">
+                <div className="flex flex-row justify-between">
+                  <div className="flex flex-col gap-2">
+                      <h2 className=" font-space font-bold text-[20px] leading-7 text-[#DEE5FF]">The Neural Knights</h2>
+                    <div className="flex flex-row gap-3 ">
+                      <p className="font-inter font-bold text-[#A3AAC4] text-[10px] leading-3.75 tracking-[1px] uppercase bg-[#192540] p-2 rounded-2xl">PyTorch</p>
+                      <p className="font-inter font-bold text-[#A3AAC4] text-[10px] leading-3.75 tracking-[1px] uppercase bg-[#192540] p-2 rounded-2xl">Backend</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <p className="font-inter font-bold text-[14px] leading-5 text-[#3ADFFA]">3/4 members</p>
+                    <div className="flex">
+                      <Image src={'/images/profile-1.png'} alt="profile pic" width={32} height={32}  />
+                      <Image src={'/images/profile-2.png'} alt="profile pic" width={32} height={32} className="-ml-3" />
+                      <Image src={'/images/profile-3.png'} alt="profile pic" width={32} height={32} className="-ml-3"/>
+                    </div>
+                  </div>
+                </div>
+                <p className="font-inter text-[14px] leading-5 text-[#A3AAC4]"> Building a decentralized model training
+orchestrator. Looking for a React/Three.js expert…</p>
+                <button className="border border-[#3ADFFA4D] rounded-lg pt-3 pb-3 font-inter font-bold text-[16px] leading-6 text-[#3ADFFA]">Request to Join</button>
+              </div>
+              <div className="w-86.25 bg-[#0F1930] flex flex-col p-6 gap-4 rounded-xl">
+                <div className="flex flex-row justify-between">
+                  <div className="flex flex-col gap-2">
+                      <h2 className=" font-space font-bold text-[20px] leading-7 text-[#DEE5FF]">The Neural Knights</h2>
+                    <div className="flex flex-row gap-3 ">
+                      <p className="font-inter font-bold text-[#A3AAC4] text-[10px] leading-3.75 tracking-[1px] uppercase bg-[#192540] p-2 rounded-2xl">PyTorch</p>
+                      <p className="font-inter font-bold text-[#A3AAC4] text-[10px] leading-3.75 tracking-[1px] uppercase bg-[#192540] p-2 rounded-2xl">Backend</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <p className="font-inter font-bold text-[14px] leading-5 text-[#3ADFFA]">3/4 members</p>
+                    <div className="flex">
+                      <Image src={'/images/profile-1.png'} alt="profile pic" width={32} height={32}  />
+                      <Image src={'/images/profile-2.png'} alt="profile pic" width={32} height={32} className="-ml-3" />
+                      <Image src={'/images/profile-3.png'} alt="profile pic" width={32} height={32} className="-ml-3"/>
+                    </div>
+                  </div>
+                </div>
+                <p className="font-inter text-[14px] leading-5 text-[#A3AAC4]"> Building a decentralized model training
+orchestrator. Looking for a React/Three.js expert…</p>
+                <button className="border border-[#3ADFFA4D] rounded-lg pt-3 pb-3 font-inter font-bold text-[16px] leading-6 text-[#3ADFFA]">Request to Join</button>
+              </div>
+              <div className="w-86.25 bg-[#0F1930] flex flex-col p-6 gap-4 rounded-xl">
+                <div className="flex flex-row justify-between">
+                  <div className="flex flex-col gap-2">
+                      <h2 className=" font-space font-bold text-[20px] leading-7 text-[#DEE5FF]">The Neural Knights</h2>
+                    <div className="flex flex-row gap-3 ">
+                      <p className="font-inter font-bold text-[#A3AAC4] text-[10px] leading-3.75 tracking-[1px] uppercase bg-[#192540] p-2 rounded-2xl">PyTorch</p>
+                      <p className="font-inter font-bold text-[#A3AAC4] text-[10px] leading-3.75 tracking-[1px] uppercase bg-[#192540] p-2 rounded-2xl">Backend</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <p className="font-inter font-bold text-[14px] leading-5 text-[#3ADFFA]">3/4 members</p>
+                    <div className="flex">
+                      <Image src={'/images/profile-1.png'} alt="profile pic" width={32} height={32}  />
+                      <Image src={'/images/profile-2.png'} alt="profile pic" width={32} height={32} className="-ml-3" />
+                      <Image src={'/images/profile-3.png'} alt="profile pic" width={32} height={32} className="-ml-3"/>
+                    </div>
+                  </div>
+                </div>
+                <p className="font-inter text-[14px] leading-5 text-[#A3AAC4]"> Building a decentralized model training
+orchestrator. Looking for a React/Three.js expert…</p>
+                <button className="border border-[#3ADFFA4D] rounded-lg pt-3 pb-3 font-inter font-bold text-[16px] leading-6 text-[#3ADFFA]">Request to Join</button>
+              </div>
+              <div className="w-86.25 bg-[#0F1930] flex flex-col p-6 gap-4 rounded-xl">
+                <div className="flex flex-row justify-between">
+                  <div className="flex flex-col gap-2">
+                      <h2 className=" font-space font-bold text-[20px] leading-7 text-[#DEE5FF]">The Neural Knights</h2>
+                    <div className="flex flex-row gap-3 ">
+                      <p className="font-inter font-bold text-[#A3AAC4] text-[10px] leading-3.75 tracking-[1px] uppercase bg-[#192540] p-2 rounded-2xl">PyTorch</p>
+                      <p className="font-inter font-bold text-[#A3AAC4] text-[10px] leading-3.75 tracking-[1px] uppercase bg-[#192540] p-2 rounded-2xl">Backend</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <p className="font-inter font-bold text-[14px] leading-5 text-[#3ADFFA]">3/4 members</p>
+                    <div className="flex">
+                      <Image src={'/images/profile-1.png'} alt="profile pic" width={32} height={32}  />
+                      <Image src={'/images/profile-2.png'} alt="profile pic" width={32} height={32} className="-ml-3" />
+                      <Image src={'/images/profile-3.png'} alt="profile pic" width={32} height={32} className="-ml-3"/>
+                    </div>
+                  </div>
+                </div>
+                <p className="font-inter text-[14px] leading-5 text-[#A3AAC4]"> Building a decentralized model training
+orchestrator. Looking for a React/Three.js expert…</p>
+                <button className="border border-[#3ADFFA4D] rounded-lg pt-3 pb-3 font-inter font-bold text-[16px] leading-6 text-[#3ADFFA]">Request to Join</button>
+              </div>
+
+
+            </div>
           </div>
         </div>
-        <div className="min-w-[384px] flex flex-col gap-6">
+        <div className="min-w-89 flex flex-col gap-6">
           <div>
             <div className="bg-[#141F38] flex p-6 items-center gap-2 border-t border-t-[#CC97FF33] rounded-t-xl">
               <Image
